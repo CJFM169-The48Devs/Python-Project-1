@@ -11,16 +11,17 @@ class User:
         return 0
 
     def get_account_count(self):
-        account_count = len(self.accounts) +1
+        account_count = len(self.accounts) + 1
         return account_count
-
 
     def remove_account(self, account):
         return "Account"
 
-    def is_valid_email(self,email):
-        return None
-
+    def is_valid_email(self, email):
+        import re
+        # Simple regex for email validation
+        pattern = r'^[\\w\\.-]+@[\\w\\.-]+\\.\\w+$'
+        return re.match(pattern, email) is not None
 
     def __str__(self):
         return f"{self.name} ({self.email}) - {self.get_account_count()} account(s), Total Balance: ${self.get_total_balance()}"
